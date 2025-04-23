@@ -1,0 +1,174 @@
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Navigation */
+.nav-link {
+    position: relative;
+    color: #f8f9fa;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #00f5ff;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00f5ff;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Bento Box Styles */
+.bento-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Glassmorphism Effects */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.glassmorphism::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at var(--mouse-x, 100px) var(--mouse-y, 100px),
+        rgba(255, 255, 255, 0.1),
+        transparent 70%
+    );
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.glassmorphism-inner {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassmorphism-icon {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassmorphism-social {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neumorphism Effects */
+.neumorphic {
+    background: #0a192f;
+    box-shadow:  8px 8px 16px #0a1629, -8px -8px 16px #0a1c35;
+    transition: all 0.3s ease;
+}
+
+.neumorphic:hover {
+    box-shadow:  4px 4px 8px #0a1629, -4px -4px 8px #0a1c35;
+}
+
+.neumorphic-inner {
+    background: #0a192f;
+    box-shadow: inset 3px 3px 6px #0a1629, inset -3px -3px 6px #0a1c35;
+}
+
+.neumorphic-icon {
+    background: #0a192f;
+    box-shadow: 5px 5px 10px #0a1629, -5px -5px 10px #0a1c35;
+}
+
+/* Form Styles */
+.glassmorphism-input {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s;
+}
+
+.glassmorphism-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.glassmorphism-input:focus {
+    border-color: rgba(0, 245, 255, 0.5);
+    box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.2);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a1629;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00f5ff;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00c4cc;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .bento-box {
+        box-shadow: 5px 5px 10px #0a1629, -5px -5px 10px #0a1c35;
+    }
+    
+    .neumorphic {
+        box-shadow: 5px 5px 10px #0a1629, -5px -5px 10px #0a1c35;
+    }
+}

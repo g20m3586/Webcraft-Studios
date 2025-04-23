@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcraft Studios | Premium Web Design Services</title>
+    <meta name="description" content="Professional web design services including portfolio sites, business websites, and eCommerce solutions. Custom designs at affordable prices.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00f5ff',
+                        secondary: '#ff00aa',
+                        accent: '#00ffaa',
+                        dark: '#0a192f',
+                        light: '#f8f9fa',
+                    },
+                    boxShadow: {
+                        'neumorphic': '8px 8px 16px #0a1629, -8px -8px 16px #0a1c35',
+                        'neumorphic-inset': 'inset 4px 4px 8px #0a1629, inset -4px -4px 8px #0a1c35',
+                        'neumorphic-sm': '5px 5px 10px #0a1629, -5px -5px 10px #0a1c35'
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                        sm: '4px',
+                        md: '8px',
+                        lg: '12px',
+                        xl: '16px',
+                    }
+                },
+            },
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-dark text-light font-sans min-h-screen">
+    <!-- Glassmorphism Navigation -->
+    <nav class="backdrop-blur-md bg-opacity-20 bg-gray-800 fixed w-full z-50 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center">
+                <span class="text-primary">Webcraft</span>
+                <span class="text-light">Studios</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <button class="md:hidden text-2xl focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-dark/95 backdrop-blur-lg w-full absolute left-0 px-6 py-4" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 pb-12 px-4">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span class="text-primary">Elevate</span> Your Digital Presence
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0">
+                    Professional web design solutions tailored to your brand. From sleek portfolios to powerful business sites, we create digital experiences that convert.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity shadow-lg transform hover:-translate-y-1">
+                        Get Started
+                    </a>
+                    <a href="#portfolio" class="border-2 border-primary text-primary font-bold py-3 px-8 rounded-lg hover:bg-primary hover:text-dark transition-colors shadow-lg transform hover:-translate-y-1">
+                        View Work
+                    </a>
+                </div>
+            </div>
+            
+            <div class="bento-box glassmorphism rounded-2xl p-1 overflow-hidden relative h-96 lg:h-auto">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+                </div>
+                <div class="relative h-full flex items-center justify-center">
+                    <div class="text-center p-8">
+                        <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-laptop-code text-4xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Custom Web Solutions</h3>
+                        <p class="text-gray-300">Designed for your unique needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-12 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Our <span class="text-primary">Services</span></h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    We offer comprehensive web design solutions to help your business thrive online.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Bronze Tier -->
+                <div class="bento-box neumorphic rounded-xl p-6 transform transition-all duration-500 hover:scale-105">
+                    <div class="glassmorphism-inner rounded-lg p-4 mb-4">
+                        <h3 class="text-2xl font-bold text-accent">Bronze Tier</h3>
+                        <p class="text-gray-300">Perfect for starters</p>
+                    </div>
+                    <p class="text-3xl font-bold mb-4">R1500</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> 1-page website</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Responsive design</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Basic SEO</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Contact form</li>
+                    </ul>
+                    <button class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                        Get Started
+                    </button>
+                    <div class="absolute -bottom-5 -right-5 w-20 h-20 bg-secondary rounded-full opacity-20 blur-xl"></div>
+                </div>
+
+                <!-- Silver Tier (Featured) -->
+                <div class="bento-box glassmorphism rounded-xl p-6 transform transition-all duration-500 hover:scale-105 border-2 border-primary/30 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-primary text-dark px-3 py-1 text-sm font-bold">POPULAR</div>
+                    <div class="neumorphic-inner rounded-lg p-4 mb-4">
+                        <h3 class="text-2xl font-bold text-primary">Silver Tier</h3>
+                        <p class="text-gray-300">Business solution</p>
+                    </div>
+                    <p class="text-3xl font-bold mb-4">R2000</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Multi-page website</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Company profile</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Social integration</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> 2 revisions</li>
+                    </ul>
+                    <button class="w-full bg-gradient-to-r from-accent to-primary text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                        Get Started
+                    </button>
+                    <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-primary rounded-full opacity-15 blur-xl"></div>
+                    <div class="absolute -top-5 -right-5 w-16 h-16 bg-accent rounded-full opacity-20 blur-xl"></div>
+                </div>
+
+                <!-- Gold Tier -->
+                <div class="bento-box neumorphic rounded-xl p-6 transform transition-all duration-500 hover:scale-105">
+                    <div class="glassmorphism-inner rounded-lg p-4 mb-4">
+                        <h3 class="text-2xl font-bold text-accent">Gold Tier</h3>
+                        <p class="text-gray-300">Premium package</p>
+                    </div>
+                    <p class="text-3xl font-bold mb-4">R2500</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Advanced multi-page</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> E-commerce ready</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Premium support</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> SEO optimized</li>
+                    </ul>
+                    <button class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                        Get Started
+                    </button>
+                    <div class="absolute -top-5 -left-5 w-20 h-20 bg-secondary rounded-full opacity-20 blur-xl"></div>
+                </div>
+            </div>
+            
+            <!-- Additional Services -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="bento-box glassmorphism rounded-xl p-6 flex items-start">
+                    <div class="neumorphic-icon rounded-full p-4 mr-6">
+                        <i class="fas fa-file-pdf text-2xl text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Company Profiles</h3>
+                        <p class="text-gray-300 mb-4">Professional PDF profiles that showcase your business to potential clients and partners.</p>
+                        <p class="text-xl font-bold">From R800</p>
+                    </div>
+                </div>
+                
+                <div class="bento-box neumorphic rounded-xl p-6 flex items-start">
+                    <div class="glassmorphism-icon rounded-full p-4 mr-6">
+                        <i class="fas fa-palette text-2xl text-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Poster Design</h3>
+                        <p class="text-gray-300 mb-4">Eye-catching posters for events, promotions, or business announcements.</p>
+                        <p class="text-xl font-bold">From R300</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <!-- Portfolio Section -->
+<section id="portfolio" class="py-12 px-4 bg-dark/50">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">My <span class="text-primary">GitHub Projects</span></h2>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          A selection of my recent work and contributions.
+        </p>
+      </div>
+      
+      <!-- GitHub Projects Grid -->
+      <div id="github-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Projects will be dynamically inserted here -->
+        <div class="text-center py-12">
+          <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
+          <p>Loading projects...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="bento-box glassmorphism rounded-2xl overflow-hidden relative h-96">
+                    <div class="absolute inset-0 flex items-center justify-center p-8 text-center">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-4">Monty Mhango</h2>
+                            <p class="text-xl text-gray-300 mb-6">Founder & Lead Designer</p>
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark/80"></div>
+                    <img src="images/Portfolio Image.png" alt="Monty Mhango" class="w-full h-full object-cover">
+                </div>
+                
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">About <span class="text-primary">Webcraft Studios</span></h2>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        Founded by Monty Mhango, Webcraft Studios is a passionate web design agency dedicated to creating beautiful, functional websites that help businesses and individuals establish their online presence.
+                    </p>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        With a focus on clean design, user experience, and modern technologies, we craft digital solutions that not only look great but also deliver results.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                                <i class="fas fa-lightbulb text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Our Approach</h3>
+                                <p class="text-gray-300">We believe in collaborative design, working closely with clients to understand their vision and business goals.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                                <i class="fas fa-bullseye text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">Our Mission</h3>
+                                <p class="text-gray-300">To deliver affordable, high-quality web design services that help our clients succeed online.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 px-4 bg-dark/50">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Get In <span class="text-primary">Touch</span></h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Ready to start your project? We'd love to hear from you.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bento-box neumorphic rounded-xl p-8">
+                    <form id="contactForm" class="space-y-4">
+                        <div class="form-group">
+                            <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
+                            <input type="email" id="email" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="you@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" class="block text-sm font-medium mb-1">Service Interested In</label>
+                            <select id="service" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all">
+                                <option value="">Select a service</option>
+                                <option value="bronze">Bronze Tier (R1500)</option>
+                                <option value="silver">Silver Tier (R2000)</option>
+                                <option value="gold">Gold Tier (R2500)</option>
+                                <option value="poster">Poster Design</option>
+                                <option value="profile">Company Profile</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="block text-sm font-medium mb-1">Your Message</label>
+                            <textarea id="message" rows="4" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="Tell us about your project..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-all transform hover:-translate-y-1 shadow-lg">
+                            Send Message
+                            <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="bento-box glassmorphism rounded-xl p-8 h-full flex flex-col justify-center">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-envelope text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Contact Information</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Call Us</h4>
+                                <p class="text-gray-300">+27 XX XXX XXXX</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Email Us</h4>
+                                <p class="text-gray-300">contact@webcraftstudios.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Visit Us</h4>
+                                <p class="text-gray-300">Johannesburg, South Africa</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <h4 class="font-bold text-white mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark/80 backdrop-blur-md py-8 px-4 border-t border-gray-800">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold flex items-center">
+                        <span class="text-primary">Webcraft</span>
+                        <span class="text-light">Studios</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">Crafting digital experiences that matter.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 text-center md:text-left">
+                    <div>
+                        <h3 class="text-white font-bold mb-2">Quick Links</h3>
+                        <ul class="space-y-1">
+                            <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Services</a></li>
+                            <li><a href="#portfolio" class="text-gray-400 hover:text-primary transition-colors">Portfolio</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-white font-bold mb-2">Services</h3>
+                        <ul class="space-y-1">
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Web Design</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Company Profiles</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Poster Design</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">E-commerce (Coming Soon)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Webcraft Studios. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-dark rounded-full flex items-center justify-center shadow-lg transform transition-all hover:scale-110 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
