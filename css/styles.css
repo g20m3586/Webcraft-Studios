@@ -1,9 +1,21 @@
 /* Base Styles */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
+}
+
+/* Tech Background Patterns */
+.bg-grid-pattern {
+    background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.bg-tech-circuit {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2300f5ff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 /* Animations */
@@ -18,11 +30,19 @@ body {
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-20px); }
 }
 
 .animate-float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
 }
 
 /* Navigation */
@@ -53,13 +73,13 @@ body {
 
 /* Bento Box Styles */
 .bento-box {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
     position: relative;
     overflow: hidden;
 }
 
 .bento-box:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.02);
 }
 
 /* Glassmorphism Effects */
@@ -109,7 +129,7 @@ body {
 .neumorphic {
     background: #0a192f;
     box-shadow:  8px 8px 16px #0a1629, -8px -8px 16px #0a1c35;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .neumorphic:hover {
@@ -142,11 +162,12 @@ body {
 .glassmorphism-input:focus {
     border-color: rgba(0, 245, 255, 0.5);
     box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -155,14 +176,47 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: #00f5ff;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #00c4cc;
 }
 
+/* Scrollytelling Styles */
+.scrollytelling-container {
+    perspective: 1000px;
+}
+
+.scrollytelling-step {
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 4rem;
+}
+
+.scrollytelling-step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scrollytelling-image {
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scrollytelling-image.active {
+    opacity: 1;
+}
+
 /* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .scrollytelling-container {
+        height: auto;
+    }
+    
+    .scrollytelling-visual {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .bento-box {
         box-shadow: 5px 5px 10px #0a1629, -5px -5px 10px #0a1c35;
@@ -170,5 +224,27 @@ body {
     
     .neumorphic {
         box-shadow: 5px 5px 10px #0a1629, -5px -5px 10px #0a1c35;
+    }
+    
+    h1 {
+        font-size: 4.5rem;
+    }
+    
+    h2 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    h2 {
+        font-size: 2.75rem;
+    }
+    
+    p, li, a, button {
+        font-size: 1rem;
     }
 }

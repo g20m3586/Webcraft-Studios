@@ -30,6 +30,13 @@
                         md: '8px',
                         lg: '12px',
                         xl: '16px',
+                    },
+                    fontFamily: {
+                        'sans': ['"Poppins"', 'sans-serif'],
+                        'display': ['"Bebas Neue"', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'display': '10rem',
                     }
                 },
             },
@@ -40,26 +47,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-dark text-light font-sans min-h-screen">
+<body class="bg-dark text-light font-sans min-h-screen overflow-x-hidden">
+    <!-- Tech Background Animation -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="absolute inset-0 bg-tech-circuit opacity-5"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-dark/90 to-dark"></div>
+    </div>
+
     <!-- Glassmorphism Navigation -->
-    <nav class="backdrop-blur-md bg-opacity-20 bg-gray-800 fixed w-full z-50 py-4">
+    <nav class="backdrop-blur-md bg-opacity-20 bg-gray-800 fixed w-full z-50 py-4 border-b border-gray-700/50">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold flex items-center">
+            <a href="#" class="text-3xl font-bold flex items-center">
                 <span class="text-primary">Webcraft</span>
                 <span class="text-light">Studios</span>
             </a>
             
             <div class="hidden md:flex space-x-8">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#services" class="nav-link text-lg">Services</a>
+                <a href="#portfolio" class="nav-link text-lg">Portfolio</a>
+                <a href="#pricing" class="nav-link text-lg">Pricing</a>
+                <a href="#about" class="nav-link text-lg">About</a>
+                <a href="#contact" class="nav-link text-lg">Contact</a>
             </div>
             
             <button class="md:hidden text-2xl focus:outline-none" id="mobile-menu-button">
@@ -70,46 +88,110 @@
         <!-- Mobile Menu -->
         <div class="md:hidden hidden bg-dark/95 backdrop-blur-lg w-full absolute left-0 px-6 py-4" id="mobile-menu">
             <div class="flex flex-col space-y-4">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#services" class="nav-link text-lg">Services</a>
+                <a href="#portfolio" class="nav-link text-lg">Portfolio</a>
+                <a href="#pricing" class="nav-link text-lg">Pricing</a>
+                <a href="#about" class="nav-link text-lg">About</a>
+                <a href="#contact" class="nav-link text-lg">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center pt-20 pb-12 px-4">
-        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <!-- Hero Section with Parallax -->
+    <section class="min-h-screen flex items-center pt-32 pb-12 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary rounded-full filter blur-3xl opacity-20 animate-float"></div>
+            <div class="absolute top-1/3 right-1/3 w-96 h-96 bg-secondary rounded-full filter blur-3xl opacity-10 animate-float animation-delay-2000"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent rounded-full filter blur-3xl opacity-15 animate-float animation-delay-4000"></div>
+        </div>
+        
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="text-center lg:text-left">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                    <span class="text-primary">Elevate</span> Your Digital Presence
+                <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tight">
+                    <span class="text-primary block">Elevate</span>
+                    <span class="block">Your Digital</span>
+                    <span class="block">Presence</span>
                 </h1>
-                <p class="text-xl text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0">
+                <p class="text-2xl text-gray-300 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                     Professional web design solutions tailored to your brand. From sleek portfolios to powerful business sites, we create digital experiences that convert.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="#contact" class="bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity shadow-lg transform hover:-translate-y-1">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-accent text-dark font-bold py-4 px-10 rounded-lg hover:opacity-90 transition-opacity shadow-lg transform hover:-translate-y-1 text-lg">
                         Get Started
                     </a>
-                    <a href="#portfolio" class="border-2 border-primary text-primary font-bold py-3 px-8 rounded-lg hover:bg-primary hover:text-dark transition-colors shadow-lg transform hover:-translate-y-1">
+                    <a href="#portfolio" class="border-2 border-primary text-primary font-bold py-4 px-10 rounded-lg hover:bg-primary hover:text-dark transition-colors shadow-lg transform hover:-translate-y-1 text-lg">
                         View Work
                     </a>
                 </div>
             </div>
             
-            <div class="bento-box glassmorphism rounded-2xl p-1 overflow-hidden relative h-96 lg:h-auto">
+            <div class="bento-box glassmorphism rounded-3xl p-2 overflow-hidden relative h-[32rem] lg:h-[40rem] transform transition-all duration-500 hover:scale-105">
                 <div class="absolute inset-0 flex items-center justify-center">
                     <div class="w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
                 </div>
                 <div class="relative h-full flex items-center justify-center">
                     <div class="text-center p-8">
-                        <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-laptop-code text-4xl text-primary"></i>
+                        <div class="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
+                            <i class="fas fa-laptop-code text-5xl text-primary"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-2">Custom Web Solutions</h3>
-                        <p class="text-gray-300">Designed for your unique needs</p>
+                        <h3 class="text-3xl font-bold mb-4">Custom Web Solutions</h3>
+                        <p class="text-xl text-gray-300">Designed for your unique needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrollytelling Section -->
+    <section class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <div class="scrollytelling-container h-[300vh] relative">
+                <div class="sticky top-0 h-screen flex items-center">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="scrollytelling-content space-y-12">
+                            <div class="scrollytelling-step opacity-0 translate-y-10">
+                                <h3 class="text-4xl font-bold text-primary mb-4">Discovery Phase</h3>
+                                <p class="text-xl text-gray-300 leading-relaxed">
+                                    We begin by understanding your business goals, target audience, and unique requirements through in-depth consultations.
+                                </p>
+                            </div>
+                            <div class="scrollytelling-step opacity-0 translate-y-10">
+                                <h3 class="text-4xl font-bold text-primary mb-4">Design Process</h3>
+                                <p class="text-xl text-gray-300 leading-relaxed">
+                                    Our designers create wireframes and mockups, iterating based on your feedback until we achieve the perfect look and feel.
+                                </p>
+                            </div>
+                            <div class="scrollytelling-step opacity-0 translate-y-10">
+                                <h3 class="text-4xl font-bold text-primary mb-4">Development</h3>
+                                <p class="text-xl text-gray-300 leading-relaxed">
+                                    Using cutting-edge technologies, we bring the designs to life with clean, efficient code and seamless functionality.
+                                </p>
+                            </div>
+                            <div class="scrollytelling-step opacity-0 translate-y-10">
+                                <h3 class="text-4xl font-bold text-primary mb-4">Launch & Support</h3>
+                                <p class="text-xl text-gray-300 leading-relaxed">
+                                    After thorough testing, we launch your site and provide ongoing support to ensure it continues to perform optimally.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="scrollytelling-visual hidden lg:block">
+                            <div class="bento-box glassmorphism rounded-3xl h-[32rem] w-full relative overflow-hidden">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="1">
+                                        <img src="https://source.unsplash.com/random/800x600/?meeting" alt="Discovery" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="2">
+                                        <img src="https://source.unsplash.com/random/800x600/?design" alt="Design" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="3">
+                                        <img src="https://source.unsplash.com/random/800x600/?coding" alt="Development" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="4">
+                                        <img src="https://source.unsplash.com/random/800x600/?launch" alt="Launch" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,176 +199,193 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-12 px-4">
+    <section id="services" class="py-24 px-4 relative">
+        <div class="absolute -top-32 left-0 w-full h-32 bg-gradient-to-b from-dark to-transparent z-10"></div>
         <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Our <span class="text-primary">Services</span></h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 class="text-6xl font-bold mb-6">
+                    <span class="text-primary">Our</span> Services
+                </h2>
+                <p class="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                     We offer comprehensive web design solutions to help your business thrive online.
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <!-- Bronze Tier -->
-                <div class="bento-box neumorphic rounded-xl p-6 transform transition-all duration-500 hover:scale-105">
-                    <div class="glassmorphism-inner rounded-lg p-4 mb-4">
-                        <h3 class="text-2xl font-bold text-accent">Bronze Tier</h3>
-                        <p class="text-gray-300">Perfect for starters</p>
+                <div class="bento-box neumorphic rounded-2xl p-8 transform transition-all duration-500 hover:scale-105 h-full flex flex-col">
+                    <div class="glassmorphism-inner rounded-xl p-6 mb-6">
+                        <h3 class="text-3xl font-bold text-accent mb-2">Bronze Tier</h3>
+                        <p class="text-xl text-gray-300">Perfect for starters</p>
                     </div>
-                    <p class="text-3xl font-bold mb-4">R1500</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> 1-page website</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Responsive design</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Basic SEO</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Contact form</li>
+                    <p class="text-4xl font-bold mb-6">R1500</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">1-page website with responsive design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">Basic SEO optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">Contact form integration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">1 round of revisions</span>
+                        </li>
                     </ul>
-                    <button class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                    <button class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-4 px-6 rounded-xl hover:opacity-90 transition-opacity text-lg">
                         Get Started
                     </button>
-                    <div class="absolute -bottom-5 -right-5 w-20 h-20 bg-secondary rounded-full opacity-20 blur-xl"></div>
+                    <div class="absolute -bottom-5 -right-5 w-24 h-24 bg-secondary rounded-full opacity-20 blur-xl"></div>
                 </div>
 
                 <!-- Silver Tier (Featured) -->
-                <div class="bento-box glassmorphism rounded-xl p-6 transform transition-all duration-500 hover:scale-105 border-2 border-primary/30 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-primary text-dark px-3 py-1 text-sm font-bold">POPULAR</div>
-                    <div class="neumorphic-inner rounded-lg p-4 mb-4">
-                        <h3 class="text-2xl font-bold text-primary">Silver Tier</h3>
-                        <p class="text-gray-300">Business solution</p>
+                <div class="bento-box glassmorphism rounded-2xl p-8 transform transition-all duration-500 hover:scale-105 border-2 border-primary/30 relative overflow-hidden h-full flex flex-col">
+                    <div class="absolute top-0 right-0 bg-primary text-dark px-4 py-2 text-sm font-bold rounded-bl-xl">MOST POPULAR</div>
+                    <div class="neumorphic-inner rounded-xl p-6 mb-6">
+                        <h3 class="text-3xl font-bold text-primary mb-2">Silver Tier</h3>
+                        <p class="text-xl text-gray-300">Business solution</p>
                     </div>
-                    <p class="text-3xl font-bold mb-4">R2000</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Multi-page website</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Company profile</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Social integration</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> 2 revisions</li>
+                    <p class="text-4xl font-bold mb-6">R2000</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">Multi-page website (up to 5 pages)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">Professional company profile</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">Social media integration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">2 rounds of revisions</span>
+                        </li>
                     </ul>
-                    <button class="w-full bg-gradient-to-r from-accent to-primary text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                    <button class="w-full bg-gradient-to-r from-accent to-primary text-dark font-bold py-4 px-6 rounded-xl hover:opacity-90 transition-opacity text-lg">
                         Get Started
                     </button>
-                    <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-primary rounded-full opacity-15 blur-xl"></div>
-                    <div class="absolute -top-5 -right-5 w-16 h-16 bg-accent rounded-full opacity-20 blur-xl"></div>
+                    <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-primary rounded-full opacity-15 blur-xl"></div>
+                    <div class="absolute -top-5 -right-5 w-20 h-20 bg-accent rounded-full opacity-20 blur-xl"></div>
                 </div>
 
                 <!-- Gold Tier -->
-                <div class="bento-box neumorphic rounded-xl p-6 transform transition-all duration-500 hover:scale-105">
-                    <div class="glassmorphism-inner rounded-lg p-4 mb-4">
-                        <h3 class="text-2xl font-bold text-accent">Gold Tier</h3>
-                        <p class="text-gray-300">Premium package</p>
+                <div class="bento-box neumorphic rounded-2xl p-8 transform transition-all duration-500 hover:scale-105 h-full flex flex-col">
+                    <div class="glassmorphism-inner rounded-xl p-6 mb-6">
+                        <h3 class="text-3xl font-bold text-accent mb-2">Gold Tier</h3>
+                        <p class="text-xl text-gray-300">Premium package</p>
                     </div>
-                    <p class="text-3xl font-bold mb-4">R2500</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Advanced multi-page</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> E-commerce ready</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> Premium support</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-2"></i> SEO optimized</li>
+                    <p class="text-4xl font-bold mb-6">R2500</p>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">Advanced multi-page website (up to 8 pages)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">E-commerce ready (future integration)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">Premium support & SEO optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-accent text-xl mt-1 mr-3"></i>
+                            <span class="text-lg">3 rounds of revisions</span>
+                        </li>
                     </ul>
-                    <button class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                    <button class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-4 px-6 rounded-xl hover:opacity-90 transition-opacity text-lg">
                         Get Started
                     </button>
-                    <div class="absolute -top-5 -left-5 w-20 h-20 bg-secondary rounded-full opacity-20 blur-xl"></div>
-                </div>
-            </div>
-            
-            <!-- Additional Services -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                <div class="bento-box glassmorphism rounded-xl p-6 flex items-start">
-                    <div class="neumorphic-icon rounded-full p-4 mr-6">
-                        <i class="fas fa-file-pdf text-2xl text-primary"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">Company Profiles</h3>
-                        <p class="text-gray-300 mb-4">Professional PDF profiles that showcase your business to potential clients and partners.</p>
-                        <p class="text-xl font-bold">From R800</p>
-                    </div>
-                </div>
-                
-                <div class="bento-box neumorphic rounded-xl p-6 flex items-start">
-                    <div class="glassmorphism-icon rounded-full p-4 mr-6">
-                        <i class="fas fa-palette text-2xl text-accent"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">Poster Design</h3>
-                        <p class="text-gray-300 mb-4">Eye-catching posters for events, promotions, or business announcements.</p>
-                        <p class="text-xl font-bold">From R300</p>
-                    </div>
+                    <div class="absolute -top-5 -left-5 w-24 h-24 bg-secondary rounded-full opacity-20 blur-xl"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <!-- Portfolio Section -->
-<section id="portfolio" class="py-12 px-4 bg-dark/50">
-    <div class="container mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold mb-4">My <span class="text-primary">GitHub Projects</span></h2>
-        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-          A selection of my recent work and contributions.
-        </p>
-      </div>
-      
-      <!-- GitHub Projects Grid -->
-      <div id="github-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Projects will be dynamically inserted here -->
-        <div class="text-center py-12">
-          <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
-          <p>Loading projects...</p>
+    <section id="portfolio" class="py-24 px-4 bg-dark/50 relative">
+        <div class="container mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-6xl font-bold mb-6">
+                    <span class="text-primary">Featured</span> Projects
+                </h2>
+                <p class="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    A selection of my recent work and contributions.
+                </p>
+            </div>
+            
+            <!-- GitHub Projects Grid -->
+            <div id="github-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be dynamically inserted here -->
+                <div class="text-center py-12">
+                    <i class="fas fa-spinner fa-spin text-4xl text-primary mb-4"></i>
+                    <p class="text-xl">Loading projects...</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
     <!-- About Section -->
-    <section id="about" class="py-12 px-4">
+    <section id="about" class="py-24 px-4 relative">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="bento-box glassmorphism rounded-2xl overflow-hidden relative h-96">
-                    <div class="absolute inset-0 flex items-center justify-center p-8 text-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="bento-box glassmorphism rounded-3xl overflow-hidden relative h-[40rem] transform transition-all duration-500 hover:scale-[1.02]">
+                    <div class="absolute inset-0 flex items-center justify-center p-8 text-center z-10">
                         <div>
-                            <h2 class="text-3xl font-bold mb-4">Monty Mhango</h2>
-                            <p class="text-xl text-gray-300 mb-6">Founder & Lead Designer</p>
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                            <h2 class="text-4xl font-bold mb-4">Monty Mhango</h2>
+                            <p class="text-2xl text-gray-300 mb-8">Founder & Lead Designer</p>
+                            <div class="flex justify-center space-x-6">
+                                <a href="#" class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors text-2xl">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="#" class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                <a href="#" class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors text-2xl">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="#" class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                                <a href="#" class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary hover:text-dark transition-colors text-2xl">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark/80"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark/80 z-0"></div>
                     <img src="images/Portfolio Image.png" alt="Monty Mhango" class="w-full h-full object-cover">
                 </div>
                 
                 <div>
-                    <h2 class="text-4xl font-bold mb-6">About <span class="text-primary">Webcraft Studios</span></h2>
-                    <p class="text-gray-300 mb-6 text-lg">
+                    <h2 class="text-6xl font-bold mb-8">
+                        About <span class="text-primary">Webcraft Studios</span>
+                    </h2>
+                    <p class="text-2xl text-gray-300 mb-8 leading-relaxed">
                         Founded by Monty Mhango, Webcraft Studios is a passionate web design agency dedicated to creating beautiful, functional websites that help businesses and individuals establish their online presence.
                     </p>
-                    <p class="text-gray-300 mb-6 text-lg">
+                    <p class="text-2xl text-gray-300 mb-12 leading-relaxed">
                         With a focus on clean design, user experience, and modern technologies, we craft digital solutions that not only look great but also deliver results.
                     </p>
-                    <div class="space-y-4">
+                    <div class="space-y-8">
                         <div class="flex items-start">
-                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                            <div class="neumorphic-icon rounded-full p-4 mr-6 text-xl">
                                 <i class="fas fa-lightbulb text-primary"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold mb-1">Our Approach</h3>
-                                <p class="text-gray-300">We believe in collaborative design, working closely with clients to understand their vision and business goals.</p>
+                                <h3 class="text-3xl font-bold mb-3">Our Approach</h3>
+                                <p class="text-xl text-gray-300 leading-relaxed">We believe in collaborative design, working closely with clients to understand their vision and business goals.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                            <div class="neumorphic-icon rounded-full p-4 mr-6 text-xl">
                                 <i class="fas fa-bullseye text-primary"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold mb-1">Our Mission</h3>
-                                <p class="text-gray-300">To deliver affordable, high-quality web design services that help our clients succeed online.</p>
+                                <h3 class="text-3xl font-bold mb-3">Our Mission</h3>
+                                <p class="text-xl text-gray-300 leading-relaxed">To deliver affordable, high-quality web design services that help our clients succeed online.</p>
                             </div>
                         </div>
                     </div>
@@ -296,31 +395,33 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-12 px-4 bg-dark/50">
-        <div class="container mx-auto max-w-4xl">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Get In <span class="text-primary">Touch</span></h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+    <section id="contact" class="py-24 px-4 bg-dark/50 relative">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-20">
+                <h2 class="text-6xl font-bold mb-6">
+                    Get In <span class="text-primary">Touch</span>
+                </h2>
+                <p class="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                     Ready to start your project? We'd love to hear from you.
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="bento-box neumorphic rounded-xl p-8">
-                    <form id="contactForm" class="space-y-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="bento-box neumorphic rounded-3xl p-10">
+                    <form id="contactForm" class="space-y-6">
                         <div class="form-group">
-                            <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
-                            <input type="text" id="name" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="John Doe" required>
+                            <label for="name" class="block text-xl font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full glassmorphism-input px-6 py-4 rounded-xl focus:ring-2 focus:ring-primary outline-none transition-all text-lg" placeholder="John Doe" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
-                            <input type="email" id="email" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="you@example.com" required>
+                            <label for="email" class="block text-xl font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full glassmorphism-input px-6 py-4 rounded-xl focus:ring-2 focus:ring-primary outline-none transition-all text-lg" placeholder="you@example.com" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="service" class="block text-sm font-medium mb-1">Service Interested In</label>
-                            <select id="service" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all">
+                            <label for="service" class="block text-xl font-medium mb-2">Service Interested In</label>
+                            <select id="service" class="w-full glassmorphism-input px-6 py-4 rounded-xl focus:ring-2 focus:ring-primary outline-none transition-all text-lg">
                                 <option value="">Select a service</option>
                                 <option value="bronze">Bronze Tier (R1500)</option>
                                 <option value="silver">Silver Tier (R2000)</option>
@@ -332,70 +433,70 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="message" class="block text-sm font-medium mb-1">Your Message</label>
-                            <textarea id="message" rows="4" class="w-full glassmorphism-input px-4 py-3 rounded-lg focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="Tell us about your project..." required></textarea>
+                            <label for="message" class="block text-xl font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full glassmorphism-input px-6 py-4 rounded-xl focus:ring-2 focus:ring-primary outline-none transition-all text-lg" placeholder="Tell us about your project..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-all transform hover:-translate-y-1 shadow-lg">
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-dark font-bold py-5 px-6 rounded-xl hover:opacity-90 transition-all transform hover:-translate-y-1 shadow-lg text-xl">
                             Send Message
                             <i class="fas fa-paper-plane ml-2"></i>
                         </button>
                     </form>
                 </div>
                 
-                <div class="bento-box glassmorphism rounded-xl p-8 h-full flex flex-col justify-center">
-                    <div class="text-center mb-8">
-                        <div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-envelope text-3xl text-primary"></i>
+                <div class="bento-box glassmorphism rounded-3xl p-10 h-full flex flex-col justify-center">
+                    <div class="text-center mb-12">
+                        <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-envelope text-4xl text-primary"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white">Contact Information</h3>
+                        <h3 class="text-3xl font-bold text-white">Contact Information</h3>
                     </div>
                     
-                    <div class="space-y-6">
+                    <div class="space-y-8">
                         <div class="flex items-start">
-                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                            <div class="neumorphic-icon rounded-full p-4 mr-6 text-xl">
                                 <i class="fas fa-phone text-primary"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white">Call Us</h4>
-                                <p class="text-gray-300">+27 XX XXX XXXX</p>
+                                <h4 class="font-bold text-white text-2xl mb-1">Call Us</h4>
+                                <p class="text-xl text-gray-300">+27 XX XXX XXXX</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
-                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                            <div class="neumorphic-icon rounded-full p-4 mr-6 text-xl">
                                 <i class="fas fa-envelope text-primary"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white">Email Us</h4>
-                                <p class="text-gray-300">contact@webcraftstudios.com</p>
+                                <h4 class="font-bold text-white text-2xl mb-1">Email Us</h4>
+                                <p class="text-xl text-gray-300">contact@webcraftstudios.com</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
-                            <div class="neumorphic-icon rounded-full p-3 mr-4">
+                            <div class="neumorphic-icon rounded-full p-4 mr-6 text-xl">
                                 <i class="fas fa-map-marker-alt text-primary"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-white">Visit Us</h4>
-                                <p class="text-gray-300">Johannesburg, South Africa</p>
+                                <h4 class="font-bold text-white text-2xl mb-1">Visit Us</h4>
+                                <p class="text-xl text-gray-300">Johannesburg, South Africa</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mt-8 pt-6 border-t border-gray-700">
-                        <h4 class="font-bold text-white mb-4">Follow Us</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                    <div class="mt-12 pt-8 border-t border-gray-700">
+                        <h4 class="font-bold text-white text-2xl mb-6">Follow Us</h4>
+                        <div class="flex space-x-6 justify-center lg:justify-start">
+                            <a href="#" class="glassmorphism-social w-14 h-14 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors text-xl">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                            <a href="#" class="glassmorphism-social w-14 h-14 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors text-xl">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                            <a href="#" class="glassmorphism-social w-14 h-14 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors text-xl">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="#" class="glassmorphism-social w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors">
+                            <a href="#" class="glassmorphism-social w-14 h-14 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition-colors text-xl">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </div>
@@ -406,52 +507,52 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark/80 backdrop-blur-md py-8 px-4 border-t border-gray-800">
+    <footer class="bg-dark/80 backdrop-blur-md py-12 px-4 border-t border-gray-800">
         <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <a href="#" class="text-2xl font-bold flex items-center">
+            <div class="flex flex-col lg:flex-row justify-between items-center lg:items-start">
+                <div class="mb-8 lg:mb-0 text-center lg:text-left">
+                    <a href="#" class="text-3xl font-bold flex items-center justify-center lg:justify-start">
                         <span class="text-primary">Webcraft</span>
                         <span class="text-light">Studios</span>
                     </a>
-                    <p class="text-gray-400 mt-2">Crafting digital experiences that matter.</p>
+                    <p class="text-xl text-gray-400 mt-3">Crafting digital experiences that matter.</p>
                 </div>
                 
-                <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 text-center md:text-left">
+                <div class="grid grid-cols-2 gap-12 text-center lg:text-left">
                     <div>
-                        <h3 class="text-white font-bold mb-2">Quick Links</h3>
-                        <ul class="space-y-1">
-                            <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Services</a></li>
-                            <li><a href="#portfolio" class="text-gray-400 hover:text-primary transition-colors">Portfolio</a></li>
-                            <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                        <h3 class="text-white font-bold text-xl mb-4">Quick Links</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors text-lg">Services</a></li>
+                            <li><a href="#portfolio" class="text-gray-400 hover:text-primary transition-colors text-lg">Portfolio</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors text-lg">About</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors text-lg">Contact</a></li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h3 class="text-white font-bold mb-2">Services</h3>
-                        <ul class="space-y-1">
-                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Web Design</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Company Profiles</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Poster Design</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">E-commerce (Coming Soon)</a></li>
+                        <h3 class="text-white font-bold text-xl mb-4">Services</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-lg">Web Design</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-lg">Company Profiles</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-lg">Poster Design</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-primary transition-colors text-lg">E-commerce</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Webcraft Studios. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">Terms of Service</a>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center">
+                <p class="text-gray-400 text-lg mb-4 lg:mb-0">© 2023 Webcraft Studios. All rights reserved.</p>
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-lg">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors text-lg">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-dark rounded-full flex items-center justify-center shadow-lg transform transition-all hover:scale-110 opacity-0 invisible">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-dark rounded-full flex items-center justify-center shadow-lg transform transition-all hover:scale-110 opacity-0 invisible text-xl">
         <i class="fas fa-arrow-up"></i>
     </button>
 
