@@ -72,17 +72,25 @@
                 <span class="text-light">Studios</span>
             </a>
             
-            <div class="hidden md:flex space-x-8">
+            <div class="hidden md:flex space-x-8 items-center">
                 <a href="#services" class="nav-link text-lg">Services</a>
                 <a href="#portfolio" class="nav-link text-lg">Portfolio</a>
                 <a href="#pricing" class="nav-link text-lg">Pricing</a>
                 <a href="#about" class="nav-link text-lg">About</a>
                 <a href="#contact" class="nav-link text-lg">Contact</a>
+                <button id="theme-toggle" class="ml-4 p-2 rounded-full glassmorphism">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
             </div>
             
-            <button class="md:hidden text-2xl focus:outline-none" id="mobile-menu-button">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="flex items-center md:hidden">
+                <button id="theme-toggle" class="mr-4 p-2 rounded-full glassmorphism">
+                    <i class="fas fa-moon" id="theme-icon-mobile"></i>
+                </button>
+                <button class="text-2xl focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
         
         <!-- Mobile Menu -->
@@ -178,16 +186,16 @@
                             <div class="bento-box glassmorphism rounded-3xl h-[32rem] w-full relative overflow-hidden">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="1">
-                                        <img src="https://source.unsplash.com/random/800x600/?meeting" alt="Discovery" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="Discovery" class="w-full h-full object-cover">
                                     </div>
                                     <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="2">
-                                        <img src="https://source.unsplash.com/random/800x600/?design" alt="Design" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166" alt="Design" class="w-full h-full object-cover">
                                     </div>
                                     <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="3">
-                                        <img src="https://source.unsplash.com/random/800x600/?coding" alt="Development" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="Development" class="w-full h-full object-cover">
                                     </div>
                                     <div class="scrollytelling-image opacity-0 absolute inset-0 transition-all duration-1000" data-step="4">
-                                        <img src="https://source.unsplash.com/random/800x600/?launch" alt="Launch" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d" alt="Launch" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                             </div>
@@ -320,6 +328,14 @@
                 <p class="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                     A selection of my recent work and contributions.
                 </p>
+            </div>
+            
+            <!-- Project Filters -->
+            <div class="flex justify-center mb-8 gap-4 flex-wrap">
+                <button class="filter-btn active bg-primary/20 text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-dark transition-colors" data-filter="all">All</button>
+                <button class="filter-btn bg-primary/20 text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-dark transition-colors" data-filter="javascript">JavaScript</button>
+                <button class="filter-btn bg-primary/20 text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-dark transition-colors" data-filter="html">HTML</button>
+                <button class="filter-btn bg-primary/20 text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-dark transition-colors" data-filter="css">CSS</button>
             </div>
             
             <!-- GitHub Projects Grid -->
